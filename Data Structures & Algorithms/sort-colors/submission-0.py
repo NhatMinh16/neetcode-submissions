@@ -1,0 +1,19 @@
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        def countingSort(arr):
+            if not arr:
+                return arr
+            max_val = max(arr)
+            count = [0] * (max_val + 1)
+            for num in arr:
+                count[num] += 1
+            arr[:] = []
+            for num, freq in enumerate(count):
+                arr.extend([num] * freq)
+            return arr
+        sortedArr = countingSort(nums)
+        return sortedArr
+        
